@@ -38,4 +38,4 @@ jobs:
 
       - name: 推送exe
         run: |
-          ossutil cp main.exe oss://oss-cn-chengdu/testOssUtil/main.exe
+          ossutil cp main.exe oss://typorehwf/testOssUtil/main.exe
