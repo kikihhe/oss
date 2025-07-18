@@ -34,7 +34,7 @@ jobs:
 
       - name: Build main.exe
         run: |
-          build
+          make build
 
       - name: 推送exe
         run: |
