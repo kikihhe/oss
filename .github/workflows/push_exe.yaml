@@ -1,0 +1,41 @@
+name: push exe to oss
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: '版本号'
+        required: true
+        default: '1.0.0'
+
+
+
+
+jobs:
+  push-exe:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: 配置oss
+        uses: yizhoumo/setup-ossutil@v2
+        with:
+          ## The version to download and use, or 'latest' for the latest version.
+          ossutil-version: '2.1.1'
+
+          # The following parameters are (optionally) used to config the credential.
+          ## The endpoint of the region in which the bucket is located.
+          endpoint: oss-cn-chengdu
+          ## The AccessKey ID of the credential.
+          access-key-id: ${{ secrets.OSS_ACCESS_KEY_ID }}
+          ## The AccessKey Secret of the credential.
+          access-key-secret: ${{ secrets.OSS_ACCESS_KEY_SECRET }}
+
+      - name: Build main.exe
+        run: |
+          build
+
+      - name: 推送exe
+        run: |
+          ossutil cp main.exe oss://oss-cn-chengdu/testOssUtil/main.exe
