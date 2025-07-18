@@ -22,7 +22,7 @@ jobs:
         uses: yizhoumo/setup-ossutil@v2
         with:
           ## The version to download and use, or 'latest' for the latest version.
-          ossutil-version: '2.1.1'
+          ossutil-version: '1.7.18'
 
           # The following parameters are (optionally) used to config the credential.
           ## The endpoint of the region in which the bucket is located.
