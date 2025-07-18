@@ -36,6 +36,9 @@ jobs:
         run: |
           make build
 
+      - name: 查找exe
+        run: |
+          ossutil ls oss://typorehwf/testOssUtil/
       - name: 推送exe
         run: |
           ossutil cp main.exe oss://typorehwf/main.exe
