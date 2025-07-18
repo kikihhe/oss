@@ -38,4 +38,5 @@ jobs:
 
       - name: 推送exe
         run: |
-          ossutil cp main.exe oss://typorehwf/main.exe
+          ossutil rm oss://typorehwf/testOssUtil/main.exe
+          ossutil cp main.exe oss://typorehwf/testOssUtil/main.exe --acl public-read-write
